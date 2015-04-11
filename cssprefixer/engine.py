@@ -87,8 +87,11 @@ def magic(ruleset, debug, minify, filt, parser):
     return str(cssText) + '\n'
 
 
-def process(string, debug=False, minify=False, filt=['webkit', 'moz', 'o', 'ms'], **prefs):
+def process(string, debug=False, silent = True, minify=False, filt=['webkit', 'moz', 'o', 'ms'], **prefs):
     loglevel = 'DEBUG' if debug else 'ERROR'
+    if silent:
+        loglevel = 'CRITICAL'
+        debug = False
     parser = cssutils.CSSParser(loglevel=loglevel)
     if minify:
         cssutils.ser.prefs.useMinified()

@@ -1,6 +1,8 @@
-# CSSPrefixer
+# CSSPrefixer with console agent and Python3 support
+
 A tool that rewrites your CSS files, adding vendor-prefixed versions of (popular) CSS3 rules.
 It also can combine and minify your stylesheets.
+
 **Keep your styles clean!**
 
 It supports many CSS3 stuff including keyframe animations, Flexbox and gradients.
@@ -28,27 +30,41 @@ becomes this:
 
 Requires [cssutils](http://cthedot.de/cssutils/).
 
-## [Contributors](https://github.com/myfreeweb/cssprefixer/graphs/contributors)
-
 ## How to install 
-### From PyPI
-    $ sudo pip install cssprefixer
-
 ### from git
-    $ git clone git://github.com/myfreeweb/cssprefixer.git
-    $ cd cssprefixer
-    $ sudo pip install cssutils
-    $ sudo python setup.py install
+    $ sudo pip install -e git+https://github.com/nanopony/cssprefixer.git
 
 ## How to use
-### From console
-Like this:
-`cssprefixer my1.css my2.css --minify > result.css`
+### Console Tool
+
+    usage: prefixize [-h] [-m MUTE] [-o OUTPUT | -i | -s SUFFIX] filename
+
+    positional arguments:
+      filename              Input CSS file
+
+    optional arguments:
+     -h, --help
+     show this help message and exit
+     
+     -m MUTE, --mute MUTE
+     Don't check for errors
+     
+     -o OUTPUT, --output OUTPUT
+     Specity output filename
+     
+     -i, --inplace
+     Convert CSS in-place
+     
+     -s SUFFIX, --suffix SUFFIX
+     Save to suffixed filename, like input main.css, suffix: processed, gives main.processed.css
 
 ### From Python
 ```python
-import cssprefixer
+from cssprefixer.engine import process
 cssprefixer.process(open('my.css').read(), debug=False, minify=True)
 ````
-### With Django or Flask
-or any other Python web framework — latest git version of [webassets](http://github.com/miracle2k/webassets) has a filter for cssprefixer.
+
+## Credits
+
+Currently maintained by Nanopony,
+[Original Contributors](https://github.com/myfreeweb/cssprefixer/graphs/contributors)

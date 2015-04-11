@@ -13,8 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import cssprefixer.engine
-import cssprefixer.rules
-from cssprefixer.engine import process
+__version__ = "0.0.1"
 
-__all__ = ('process', 'engine', 'rules')
+from cssprefixer.engine import process
+ 
